@@ -1,6 +1,6 @@
 #ifndef PLATFORM_INTERFACE_HPP
 #define PLATFORM_INTERFACE_HPP
-#include "../core/poolManagment.hpp"
+#include "../poolManagment.hpp"
 
 // windows
 #ifdef _WIN32

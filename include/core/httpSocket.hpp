@@ -1,7 +1,7 @@
 #ifndef HTTP_SOCKET 
 #define HTTP_SOCKET
 #include <memory>
-#include "../platformInterfaces/platformInterface.hpp"
+#include "platformInterfaces/platformInterface.hpp"
 #include "poolManagment.hpp"
 
 class httpServer {

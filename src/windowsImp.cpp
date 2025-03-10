@@ -1,4 +1,5 @@
-#include "../include/platformInterfaces/windowsPlatform.hpp"
+#include "../include/core/platformInterfaces/windowsPlatform.hpp"
+#include "../include/core/httpParsing.hpp"
 #include <iostream>
 
 
@@ -101,8 +102,9 @@ void WindowsPlatform::acceptConnections(){
 
 void WindowsPlatform::processClientRequest(SOCKET clientSocket)
 {
-    char buffer[1024];
+    char buffer[4096];
     int bytesReceived;
+    ParsingHttpHeader parseHeader ;
 
     while (true) {
         bytesReceived = recv(clientSocket, buffer, sizeof(buffer), 0);
@@ -115,10 +117,13 @@ void WindowsPlatform::processClientRequest(SOCKET clientSocket)
             std::cerr << "Connection closed or error: " << WSAGetLastError() << std::endl;
             break;
         }
-
-        // Null-terminate the received data and print it
         buffer[bytesReceived] = '\0';
-        // std::cout << "Received: " << buffer << std::endl;
+        std::string buffAsString(buffer);
+        parseHeader << buffAsString ; 
+        parseHeader.startParsing();
+        
+        // Null-terminate the received data and print it
+        // std::cout  << buffAsString << std::endl;
 
         // Construct an HTTP "Hello, World!" response
         const char* httpResponse =
@@ -140,6 +145,5 @@ void WindowsPlatform::processClientRequest(SOCKET clientSocket)
         // Close the client socket after sending the response
         break;
     }
-
     closesocket(clientSocket);
 }

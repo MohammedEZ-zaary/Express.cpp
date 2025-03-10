@@ -1,6 +1,6 @@
-#include "../../include/platformInterfaces/linuxPlatform.hpp"
-#include "../../include/platformInterfaces/platFormFactory.hpp"
-#include "../../include/platformInterfaces/windowsPlatform.hpp"
+#include "../../include/core/platformInterfaces/linuxPlatform.hpp"
+#include "../../include/core/platformInterfaces/platFormFactory.hpp"
+#include "../../include/core/platformInterfaces/windowsPlatform.hpp"
 
 std::unique_ptr<PlatformInterface> createPlatform(){
     
