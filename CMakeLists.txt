@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.12)
 
-project(Handsome VERSION 1.0)
+project(Express.cpp VERSION 1.0)
 
 # Specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -11,14 +11,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
-# vcpkg toolchain
-# set(CMAKE_TOOLCHAIN_FILE "E:/development/handsome/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "" FORCE)
 
 # Add the library target
 add_library(expressCpp STATIC
-    src/core/httpSocketImp.cpp
+    src/core/helpFunctions.cpp
+    src/core/httpParsing.cpp
     src/core/platformImp.cpp
+    src/core/contentTypeMap.cpp
+    src/core/fileSystemManagment.cpp
+    src/core/multiPartFormDataHandler.cpp
+    src/core/response.cpp
     src/windowsImp.cpp
+    src/expressCpp.cpp
    
 )
 

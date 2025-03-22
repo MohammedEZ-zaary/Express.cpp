@@ -1,6 +1,9 @@
 #ifndef PLATFORM_INTERFACE_HPP
 #define PLATFORM_INTERFACE_HPP
 #include "../poolManagment.hpp"
+#include <vector>
+#include "../route.hpp"
+
 
 // windows
 #ifdef _WIN32
@@ -26,10 +29,18 @@ public:
   virtual void processClientRequest(SOCKET clientSocket) = 0; // clientSocket , request
 
   virtual void  setPort(int port) = 0 ;
-  PoolManagment pool ;
-private:
-  int port ;
-  
+  // properties
+  virtual  void setRoute(const Route& route) = 0;
+  virtual Route getRoute(const std::string& routeName) = 0;
+
+
+
+  PoolManagment pool;
+ 
+  private:
+    int port ;
+    
+
 };
 
 #endif

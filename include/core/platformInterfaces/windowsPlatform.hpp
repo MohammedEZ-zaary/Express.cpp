@@ -14,10 +14,15 @@ public:
   void processClientRequest(SOCKET clientSocket) override ;
   void setPort(int port) override ;
 
-  PoolManagment poolManagment ;
-  
+  void setRoute(const Route& route) override;
+   Route getRoute(const std::string& routeName) override;
+
+
+
 private:
   SOCKET serverSocket ;
   int port ;
+  std::vector<Route> routes;
+  Route Error404Page = Route("/404", [](const Request& , Response) {});
 };
 #endif
